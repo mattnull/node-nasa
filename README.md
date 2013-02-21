@@ -5,6 +5,8 @@ Node.js library for NASA's Open API
 http://data.nasa.gov/api-info/
 
 ** This is work in progress
+## Installation
+`npm install node-nasa`
 
 ## Usage
 ```javascript
