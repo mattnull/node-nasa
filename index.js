@@ -37,9 +37,47 @@ NASA.prototype.getDataset = function(id, callback){
 		callback('Please provide a dataset ID or Slug');
 	}
 
-	queryStr = (typeof id === 'string' && id) ? 'slug' : 'id';
+	var queryStr = (typeof id === 'string' && id) ? 'slug' : 'id';
 	
 	var endpoint = 'get_dataset';
+	endpoint = id ? endpoint+'?'+queryStr+'='+id : endpoint;
+	var url = this.baseURI+endpoint;
+
+	this.request(url, callback);
+};
+
+NASA.prototype.getCategoryDatasets = function(id, count, callback){
+
+	id = id || false;
+	count = count || false;
+
+	if(!id){
+		callback('Please provide a dataset ID or Slug');
+	}
+
+	var queryStr = (typeof id === 'string') ? 'slug=' + id : 'id=' + id;
+		queryStr += (count) ? '&count='+count : '';
+
+	var endpoint = 'get_category_datasets';
+	endpoint = id ? endpoint+'?'+queryStr+'='+id : endpoint;
+	var url = this.baseURI+endpoint;
+	console.log(id, url)
+	this.request(url, callback);
+};
+
+NASA.prototype.getTagDatasets = function(id, count, callback){
+
+	id = id || false;
+	count = count || false;
+
+	if(!id){
+		callback('Please provide a dataset ID or Slug');
+	}
+
+	var queryStr = (typeof id === 'string') ? 'slug=' + id : 'id=' + id;
+		queryStr += (count) ? '&count='+count : '';
+
+	var endpoint = 'get_tag_datasets';
 	endpoint = id ? endpoint+'?'+queryStr+'='+id : endpoint;
 	var url = this.baseURI+endpoint;
 
@@ -61,7 +99,7 @@ NASA.prototype.getDateDatasets = function(date, count, callback){
 		callback('Please provide a dataset date');
 	}
 
-	queryStr = (date) ? 'date='+ date : '';
+	var queryStr = (date) ? 'date='+ date : '';
 	queryStr += (count) ? '&count='+count : '';
 	
 	var endpoint = 'get_date_datasets';
@@ -75,35 +113,22 @@ NASA.prototype.search = function(search, callback){
 
 	search = search ? search.replace(/ /g, '+') : false;
 	callback = callback || function(){};
-	var self = this;
 	var endpoint = 'get_search_results';
 	endpoint = search ? endpoint+'?search='+search : endpoint;
 	var url = this.baseURI+endpoint;
 	
 	this.request(url, callback);
 };
-
-NASA.prototype.getDateIndex = function(){};
-NASA.prototype.getCategoryIndex = function(){};
-NASA.prototype.getTagIndex = function(){};
-NASA.prototype.getCategoryDatasets = function(){};
-NASA.prototype.getTagDatasets = function(){};
+/*
+ * {param} index - possible values are date, tag, category
+ */
+NASA.prototype.getIndex = function(index, callback){
+	index = index || false;
+	if(!index) callback('Please provide an index type - ex. date')
+	callback = callback || function(){};
+	var endpoint = 'get_'+index+'_index';
+	var url = this.baseURI+endpoint;
+	this.request(url, callback)
+};
 
 module.exports = NASA;
-
-// var nasa = new NASA();
-// var recentDatasets = nasa.getRecentDatasets(10, function(err, res){
-// 	console.log(res)
-// });
-
-// var search = nasa.search('planet', function(err, res){
-// 	console.log(res)
-// });
-
-// var dataset = nasa.getDataset(619, function(err, res){
-// 	console.log(res)
-// });
-
-// var dateDatasets = nasa.getDateDatasets('2011-10', 20, function(err, res){
-// 	console.log(res)
-// });
