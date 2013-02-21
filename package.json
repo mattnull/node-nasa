@@ -1,13 +1,18 @@
 {
-  "name": "nasa",
+  "name": "node-nasa",
   "description": "Node.js library for NASA's Open API",
   "author": "Matt Null <hello@mattnull.com>",
+  "version" : "0.0.1",
   "tags": [
     "nasa",
     "simple",
     "api",
     "open"
   ],
+  "repository" : { 
+    "type" : "git",
+     "url" : "http://github.com/mattnull/node-nasa.git"
+  },
   "dependencies": {
     "request": "~2.14.0",
     "events": "~0.5.0"
