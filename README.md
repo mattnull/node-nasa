@@ -8,21 +8,42 @@ http://data.nasa.gov/api-info/
 
 ## Usage
 ```javascript
-var nasa = new require('nasa')();
+/** Usage **/
+var nasa = new NASA();
 
-var recentDatasets = nasa.getRecentDatasets(10, function(error, response){
-  console.log(response)
+// params -- limit, callback
+nasa.getRecentDatasets(10, function(error, response){
+  console.log(error, response)
 });
 
-var search = nasa.search('planet', function(error, response){
-  console.log(response)
+//params -- search term, callback
+nasa.search('planet', function(error, response){
+	console.log(error, response)
 });
 
-var dataset = nasa.getDataset(619, function(error, response){
-  console.log(response)
+//params -- dataset ID, callback
+nasa.getDataset(619, function(error, response){
+	console.log(error, response)
 });
 
-var dateDatasets = nasa.getDateDatasets('2011-10', 20, function(error, response){
-  console.log(response)
+//params -- date, limit, callback
+nasa.getDateDatasets('2011-10', 20, function(error, response){
+	console.log(error, response)
+});
+
+//params -- index type (possible types - date, tag, category)
+//callback 
+nasa.getIndex('category', function(error, response){
+	console.log(error, response)
+});
+
+// params -- category, limit, callback
+nasa.getCategoryDatasets('earth-science', 20, function(error, response){
+	console.log(error, response)
+});
+
+// params -- tag, limit, callback
+nasa.getTagDatasets('apollo', 25, function(error, response){
+	console.log(error, response)
 });
 ```
