@@ -1,6 +1,6 @@
 {
   "name": "nasa",
-  "description": "Node.js lib for NASA's Open API",
+  "description": "Node.js library for NASA's Open API",
   "author": "Matt Null <hello@mattnull.com>",
   "tags": [
     "nasa",
