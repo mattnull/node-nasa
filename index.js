@@ -1,12 +1,4 @@
-// get_recent_datasets
-// get_dataset
-// get_date_datasets 
-// get_category_datasets
-// get_tag_datasets
-// get_search_results
-// get_date_index
-// get_category_index
-// get_tag_index
+
 // http://data.nasa.gov/api-info/
 var request = require('request');
 
