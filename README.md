@@ -10,7 +10,7 @@ http://data.nasa.gov/api-info/
 ```javascript
 var nasa = new require('nasa')();
 
-nasa.search('Pluto').on('data', function(error, response){
+nasa.search('Saturn').on('data', function(error, response){
   console.log(error, response);
 });
 ```
