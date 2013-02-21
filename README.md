@@ -10,7 +10,19 @@ http://data.nasa.gov/api-info/
 ```javascript
 var nasa = new require('nasa')();
 
-nasa.search('Saturn').on('data', function(error, response){
-  console.log(error, response);
+var recentDatasets = nasa.getRecentDatasets(10, function(err, res){
+  console.log(res)
+});
+
+var search = nasa.search('planet', function(err, res){
+	console.log(res)
+});
+
+var dataset = nasa.getDataset(619, function(err, res){
+	console.log(res)
+});
+
+var dateDatasets = nasa.getDateDatasets('2011-10', 20, function(err, res){
+	console.log(res)
 });
 ```
