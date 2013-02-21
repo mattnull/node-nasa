@@ -10,19 +10,19 @@ http://data.nasa.gov/api-info/
 ```javascript
 var nasa = new require('nasa')();
 
-var recentDatasets = nasa.getRecentDatasets(10, function(err, res){
-  console.log(res)
+var recentDatasets = nasa.getRecentDatasets(10, function(error, response){
+  console.log(response)
 });
 
-var search = nasa.search('planet', function(err, res){
-	console.log(res)
+var search = nasa.search('planet', function(error, response){
+  console.log(response)
 });
 
-var dataset = nasa.getDataset(619, function(err, res){
-	console.log(res)
+var dataset = nasa.getDataset(619, function(error, response){
+  console.log(response)
 });
 
-var dateDatasets = nasa.getDateDatasets('2011-10', 20, function(err, res){
-	console.log(res)
+var dateDatasets = nasa.getDateDatasets('2011-10', 20, function(error, response){
+  console.log(response)
 });
 ```
